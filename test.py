@@ -19,8 +19,8 @@ def save_result(path):
     # print("Getting RGBs with new script: {}".format(datetime.now() - time_started_rgbs))
 
     time_started_rgbs = datetime.now()
-    rgbs = rgb.get_colors(image, 4)
-    print("Getting RGBs with original script: {}".format(datetime.now() - time_started_rgbs))
+    rgbs = rgb.get_colors(image, 6)
+    print("Getting RGBs with original script: {} | Found {} colors.".format(datetime.now() - time_started_rgbs, len(rgbs)))
     
     stretch = rgb.to_stretch(rgbs)
     stretch.save("results/{}_stretch.png".format(filename))
@@ -42,4 +42,6 @@ files = [join("sources/", f) for f in listdir("sources") if isfile(join("sources
 
 for filepath in files:
     save_result(filepath)
+
+# save_result("sources/fuzzle.png")
 
